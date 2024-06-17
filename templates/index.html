@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markov Chain Text Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            margin-top: 20px;
+            max-width: 600px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #343a40;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #495057;
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            resize: none;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 40px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        #generated-text {
+            width: 100%;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        #generated-text::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #generated-text::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        #generated-text::-webkit-scrollbar-thumb {
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+
+        #generated-text::-webkit-scrollbar-thumb:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Markov Chain Text Generator</h1>
+        </header>
+        <main>
+            <form action="/" method="post">
+                <label for="text_input">Enter text to analyze:</label>
+                <textarea id="text_input" name="text_input" placeholder="Start typing here..."></textarea>
+                <button type="submit">Generate Text</button>
+            </form>
+            {% if generated_text %}
+            <div id="generated-text">
+                <h2>Generated Text:</h2>
+                <p>{{ generated_text }}</p>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+</body>
+
+</html>
